@@ -18,6 +18,9 @@ framework:
     php_errors:
         log: true
 
+    # Note that due to the limited resources we are going to use this in prod
+    http_cache: true
+
 when@test:
     framework:
         test: true
