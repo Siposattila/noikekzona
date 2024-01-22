@@ -17,14 +17,14 @@ class SitemapController extends AbstractController
     ) {
     }
 
-    #[Route('/sitemap.xml', name: 'app_sitemap_xml')]
+    #[Route('/sitemap.xml', name: 'sitemap_xml')]
     public function sitemap(): Response
     {
         $routes = $this->cacheInterface->get('app.sitemap', function (ItemInterface $item) {
             $routes = array_keys(array_filter(
                 $this->routerInterface->getRouteCollection()->all(),
                 function ($routeName) {
-                    if (str_contains($routeName, 'app') && !str_contains($routeName, 'sitemap')) {
+                    if (str_contains($routeName, 'app')) {
                         return $routeName;
                     }
                 },
